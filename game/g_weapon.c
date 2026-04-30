@@ -94,6 +94,13 @@ qboolean fire_hit (edict_t *self, vec3_t aim, int damage, int kick)
 	tr = gi.trace (self->s.origin, NULL, NULL, point, self, MASK_SHOT);
 	if (tr.fraction < 1)
 	{
+		if (!tr.ent)
+		{
+			return;
+		}
+
+		gi.dprintf("tr.fraction is less than 1 --- aka melee hit\n");
+
 		if (!tr.ent->takedamage)
 			return false;
 		// if it will hit any client/monster then hit the one we wanted to hit
@@ -293,6 +300,7 @@ void fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int k
 
 	for (i = 0; i < count; i++)
 		fire_lead (self, start, aimdir, damage, kick, TE_SHOTGUN, hspread, vspread, mod);
+	gi.dprintf("shotgunfired\n");
 }
 
 
@@ -521,6 +529,16 @@ void fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int 
 	edict_t	*grenade;
 	vec3_t	dir;
 	vec3_t	forward, right, up;
+
+	if (!self)
+	{
+		return;
+	}
+
+	if (self->client) 
+	{
+		//player specific code here
+	}
 
 	vectoangles (aimdir, dir);
 	AngleVectors (dir, forward, right, up);

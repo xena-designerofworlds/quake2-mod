@@ -461,6 +461,7 @@ static int machinegun_flash [] = {MZ2_SOLDIER_MACHINEGUN_1, MZ2_SOLDIER_MACHINEG
 
 void soldier_fire (edict_t *self, int flash_number)
 {
+	gi.dprintf("soldier has fired at you \n");
 	vec3_t	start;
 	vec3_t	forward, right, up;
 	vec3_t	aim;
@@ -1224,6 +1225,7 @@ void SP_monster_soldier_x (edict_t *self)
 	self->monsterinfo.attack = soldier_attack;
 	self->monsterinfo.melee = NULL;
 	self->monsterinfo.sight = soldier_sight;
+	//xena insert new monster behaviors here
 
 	gi.linkentity (self);
 

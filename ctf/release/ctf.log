@@ -1,0 +1,7 @@
+﻿  p_weapon.c
+C:\Users\hanna\git\quake2-mod\ctf\p_weapon.c(26,17): warning C4211: nonstandard extension used: redefined extern to static
+C:\Users\hanna\git\quake2-mod\ctf\p_weapon.c(557,6): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(1412,5): warning MSB8012: TargetPath(C:\Users\hanna\git\quake2-mod\ctf\release\ctf.dll) does not match the Linker's OutputFile property value (C:\Users\hanna\git\quake2-mod\ctf\release\gamex86.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(1414,5): warning MSB8012: TargetName(ctf) does not match the Linker's OutputFile property value (gamex86). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     Creating library .\release\gamex86.lib and object .\release\gamex86.exp
+  ctf.vcxproj -> C:\Users\hanna\git\quake2-mod\ctf\release\ctf.dll

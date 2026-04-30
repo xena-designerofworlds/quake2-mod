@@ -316,7 +316,7 @@ void HelpComputer (edict_t *ent)
 	// send the layout
 	Com_sprintf (string, sizeof(string),
 		"xv 32 yv 8 picn help "			// background
-		"xv 202 yv 12 string2 \"%s\" "		// skill
+		"xv 202 yv 12 string2 \"%s\" "		// skill  ; Xena at this position draw this string
 		"xv 0 yv 24 cstring2 \"%s\" "		// level name
 		"xv 0 yv 54 cstring2 \"%s\" "		// help 1
 		"xv 0 yv 110 cstring2 \"%s\" "		// help 2
@@ -345,6 +345,11 @@ Display the current help message
 */
 void Cmd_Help_f (edict_t *ent)
 {
+	if (!ent) //sanity check
+	{
+		return;
+	}
+
 	// this is for backwards compatability
 	if (deathmatch->value)
 	{

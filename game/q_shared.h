@@ -559,7 +559,7 @@ typedef struct
 #define	EF_HYPERBLASTER		0x00000040
 #define	EF_BFG				0x00000080
 #define EF_COLOR_SHELL		0x00000100
-#define EF_POWERSCREEN		0x00000200
+#define EF_POWERSCREEN		0x00000200 //green
 #define	EF_ANIM01			0x00000400		// automatically cycle between frames 0 and 1 at 2 hz
 #define	EF_ANIM23			0x00000800		// automatically cycle between frames 2 and 3 at 2 hz
 #define EF_ANIM_ALL			0x00001000		// automatically cycle through all frames at 2hz
@@ -598,8 +598,8 @@ typedef struct
 #define RF_BEAM				128
 #define	RF_CUSTOMSKIN		256		// skin is an index in image_precache
 #define	RF_GLOW				512		// pulse lighting for bonus items
-#define RF_SHELL_RED		1024
-#define	RF_SHELL_GREEN		2048
+#define RF_SHELL_RED		1024 //use these for Deliverable 1
+#define	RF_SHELL_GREEN		2048 
 #define RF_SHELL_BLUE		4096
 
 //ROGUE
