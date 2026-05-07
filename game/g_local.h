@@ -230,6 +230,7 @@ typedef struct
 #define WEAP_HYPERBLASTER		9 
 #define WEAP_RAILGUN			10
 #define WEAP_BFG				11
+#define WEAP_NPCBLASTER			12
 
 typedef struct gitem_s
 {
@@ -728,6 +729,7 @@ qboolean fire_hit (edict_t *self, vec3_t aim, int damage, int kick);
 void fire_bullet (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int mod);
 void fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int count, int mod);
 void fire_blaster (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int effect, qboolean hyper);
+void fire_NPCblaster(edict_t* self, vec3_t start, vec3_t aimdir, int speed, int effect); //xena to add korok npc
 void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius);
 void fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius, qboolean held);
 void fire_rocket (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, float damage_radius, int radius_damage);
@@ -851,6 +853,7 @@ typedef struct
 	int			max_grenades;
 	int			max_cells;
 	int			max_slugs;
+	int			max_moneys;
 
 	gitem_t		*weapon;
 	gitem_t		*lastweapon;
@@ -873,6 +876,7 @@ typedef struct
 	vec3_t		cmd_angles;			// angles sent over in the last command
 
 	qboolean	spectator;			// client is a spectator
+	int moneys; //xena for later to finish 
 } client_respawn_t;
 
 // this structure is cleared on each PutClientInServer(),

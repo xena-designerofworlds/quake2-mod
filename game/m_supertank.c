@@ -545,6 +545,7 @@ void supertankMachineGun (edict_t *self)
   }
 
 	monster_fire_bullet (self, start, forward, 6, 4, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, flash_number);
+	gi.dprintf("supertank has shat at you with a machine gun\n");
 }	
 
 
@@ -634,6 +635,7 @@ void BossExplode (edict_t *self)
 		org[1] -= 48;
 		break;
 	case 8:
+		gi.dprintf("supertank has exploded \n");
 		self->s.sound = 0;
 		for (n= 0; n < 4; n++)
 			ThrowGib (self, "models/objects/gibs/sm_meat/tris.md2", 500, GIB_ORGANIC);

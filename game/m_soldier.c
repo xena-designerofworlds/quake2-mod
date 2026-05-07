@@ -48,7 +48,7 @@ void soldier_idle (edict_t *self)
 }
 
 void soldier_cock (edict_t *self)
-{
+{	
 	if (self->s.frame == FRAME_stand322)
 		gi.sound (self, CHAN_WEAPON, sound_cock, 1, ATTN_IDLE, 0);
 	else
@@ -408,6 +408,7 @@ mmove_t soldier_move_pain4 = {FRAME_pain401, FRAME_pain417, soldier_frames_pain4
 
 void soldier_pain (edict_t *self, edict_t *other, float kick, int damage)
 {
+	gi.dprintf("soldier is in pain\n");
 	float	r;
 	int		n;
 

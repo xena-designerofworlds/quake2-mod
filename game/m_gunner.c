@@ -127,6 +127,7 @@ void gunner_fidget (edict_t *self)
 		return;
 	if (random() <= 0.05)
 		self->monsterinfo.currentmove = &gunner_move_fidget;
+	gi.dprintf("gunner is fidgeting \n");
 }
 
 mframe_t gunner_frames_stand [] =
@@ -444,6 +445,7 @@ void GunnerFire (edict_t *self)
 	VectorSubtract (target, start, aim);
 	VectorNormalize (aim);
 	monster_fire_bullet (self, start, aim, 3, 4, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, flash_number);
+	gi.dprintf("gunner has fired \n");
 }
 
 void GunnerGrenade (edict_t *self)

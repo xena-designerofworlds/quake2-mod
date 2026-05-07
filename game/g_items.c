@@ -35,6 +35,7 @@ void Weapon_Grenade (edict_t *ent);
 void Weapon_GrenadeLauncher (edict_t *ent);
 void Weapon_Railgun (edict_t *ent);
 void Weapon_BFG (edict_t *ent);
+void Weapon_NPCBlaster(edict_t* ent);
 
 gitem_armor_t jacketarmor_info	= { 25,  50, .30, .00, ARMOR_JACKET};
 gitem_armor_t combatarmor_info	= { 50, 100, .60, .30, ARMOR_COMBAT};
@@ -194,7 +195,7 @@ void Drop_General (edict_t *ent, gitem_t *item)
 
 //======================================================================
 
-qboolean Pickup_Adrenaline (edict_t *ent, edict_t *other)
+qboolean Pickup_Adrenaline (edict_t *ent, edict_t *other) //xena use for mipha's grace???
 {
 	if (!deathmatch->value)
 		other->max_health += 1;
@@ -1297,7 +1298,7 @@ always owned, never in the world
 		"misc/w_pkup.wav",
 		NULL, 0,
 		"models/weapons/v_blast/tris.md2",
-/* icon */		"w_blaster",
+/* icon */		"blaster",
 /* pickup */	"Blaster",
 		0,
 		0,
@@ -1366,8 +1367,8 @@ always owned, never in the world
 		"misc/w_pkup.wav",
 		"models/weapons/g_machn/tris.md2", EF_ROTATE,
 		"models/weapons/v_machn/tris.md2",
-/* icon */		"w_machinegun",
-/* pickup */	"Machinegun",
+/* icon */		"machine",
+/* pickup */	"Korok Leaf",
 		0,
 		1,
 		"Bullets",
@@ -2100,7 +2101,7 @@ tank commander's head
 		NULL, 0,
 		NULL,
 /* icon */		"i_health",
-/* pickup */	"Health",
+/* pickup */	"Grilled Fish",
 /* width */		3,
 		0,
 		NULL,
@@ -2109,6 +2110,29 @@ tank commander's head
 		NULL,
 		0,
 /* precache */ "items/s_health.wav items/n_health.wav items/l_health.wav items/m_health.wav"
+	},
+
+	/* weapon_NPCblaster (.3 .3 1) (-16 -16 -16) (16 16 16), never in the world - added by xena
+*/
+	{
+		"weapon_NPCblaster",
+		NULL,
+		Use_Weapon,
+		NULL,
+		Weapon_NPCBlaster,
+		"misc/w_pkup.wav",
+		NULL, 0,
+		"models/weapons/v_blast/tris.md2",
+		/* icon */		"w_blaster",
+		/* pickup */	"Blaster",
+				0,
+				0,
+				NULL,
+				IT_WEAPON | IT_STAY_COOP,
+				WEAP_NPCBLASTER,
+				NULL,
+				0,
+				/* precache */ "weapons/blastf1a.wav misc/lasfly.wav"
 	},
 
 	// end of list marker
@@ -2181,6 +2205,7 @@ void SP_item_health_mega (edict_t *self)
 	gi.soundindex ("items/m_health.wav");
 	self->style = HEALTH_IGNORE_MAX|HEALTH_TIMED;
 }
+
 
 
 void InitItems (void)

@@ -134,6 +134,7 @@ mmove_t infantry_move_fidget = {FRAME_stand01, FRAME_stand49, infantry_frames_fi
 
 void infantry_fidget (edict_t *self)
 {
+	gi.dprintf("enforcer is fidgeting\n");
 	self->monsterinfo.currentmove = &infantry_move_fidget;
 	gi.sound (self, CHAN_VOICE, sound_idle, 1, ATTN_IDLE, 0);
 }
@@ -214,6 +215,7 @@ mmove_t infantry_move_pain2 = {FRAME_pain201, FRAME_pain210, infantry_frames_pai
 
 void infantry_pain (edict_t *self, edict_t *other, float kick, int damage)
 {
+	gi.dprintf("enforcer is in pain yeehaw\n");
 	int		n;
 
 	if (self->health < (self->max_health / 2))
