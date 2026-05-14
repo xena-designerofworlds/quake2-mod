@@ -56,6 +56,15 @@ NPC DIALOGUE: (talking to the large and oversized suspiciously strogg-like looki
   If you don't feel like going on that quest you can simply type into the console(~): "startconvo" and follow along as dialogue options are shown.
 
 
+To be continued?.... (after the time skip)
+
+
+
+
+
+
+
+
 
 
 
