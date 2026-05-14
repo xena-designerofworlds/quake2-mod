@@ -298,7 +298,11 @@ void InfantryMachineGun (edict_t *self)
 
 void infantry_sight (edict_t *self, edict_t *other)
 {
-	gi.sound (self, CHAN_BODY, sound_sight, 1, ATTN_NORM, 0);
+	if (!(other->flags & AI_OBLIVION))
+	{
+		gi.sound(self, CHAN_BODY, sound_sight, 1, ATTN_NORM, 0);
+	}
+	else return;
 }
 
 void infantry_dead (edict_t *self)

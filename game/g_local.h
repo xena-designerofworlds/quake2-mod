@@ -27,7 +27,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	GAME_INCLUDE
 #include "game.h"
 
-// the "gameversion" client command will print this plus compile date
+// the "gameversion" client command will 
+// this plus compile date
 #define	GAMEVERSION	"baseq2"
 
 // protocol bytes that can be directly added to messages
@@ -139,6 +140,7 @@ typedef enum
 #define AI_COMBAT_POINT			0x00001000
 #define AI_MEDIC				0x00002000
 #define AI_RESURRECTING			0x00004000
+#define AI_OBLIVION				0x00008000
 
 //monster attack state
 #define AS_STRAIGHT				1

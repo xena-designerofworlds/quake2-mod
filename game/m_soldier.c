@@ -791,16 +791,21 @@ void soldier_attack(edict_t *self)
 
 void soldier_sight(edict_t *self, edict_t *other)
 {
-	if (random() < 0.5)
-		gi.sound (self, CHAN_VOICE, sound_sight1, 1, ATTN_NORM, 0);
-	else
-		gi.sound (self, CHAN_VOICE, sound_sight2, 1, ATTN_NORM, 0);
-
-	if ((skill->value > 0) && (range(self, self->enemy) >= RANGE_MID))
+	
+	if (!(other->flags & AI_OBLIVION))
 	{
-		if (random() > 0.5)
-			self->monsterinfo.currentmove = &soldier_move_attack6;
+		if (random() < 0.5)
+			gi.sound(self, CHAN_VOICE, sound_sight1, 1, ATTN_NORM, 0);
+		else
+			gi.sound(self, CHAN_VOICE, sound_sight2, 1, ATTN_NORM, 0);
+
+		if ((skill->value > 0) && (range(self, self->enemy) >= RANGE_MID))
+		{
+			if (random() > 0.5)
+				self->monsterinfo.currentmove = &soldier_move_attack6;
+		}
 	}
+	else return;
 }
 
 //

@@ -363,15 +363,25 @@ void Use_Quad (edict_t *ent, gitem_t *item)
 
 //======================================================================
 
-void Use_Breather (edict_t *ent, gitem_t *item)
+void Use_Breather(edict_t* ent, gitem_t* item)
 {
+	qboolean maskOn = true;
+
 	ent->client->pers.inventory[ITEM_INDEX(item)]--;
-	ValidateSelectedItem (ent);
+	ValidateSelectedItem(ent);
+
+	if(maskOn) ent->flags = FL_NOTARGET;
 
 	if (ent->client->breather_framenum > level.framenum)
+	{
 		ent->client->breather_framenum += 300;
+	}
 	else
+	{
 		ent->client->breather_framenum = level.framenum + 300;
+	}
+	if (ent->client->breather_framenum = level.framenum + 300) maskOn = false;
+	if (maskOn = false) ent->flags = ~FL_NOTARGET;
 
 //	gi.sound(ent, CHAN_ITEM, gi.soundindex("items/damage.wav"), 1, ATTN_NORM, 0);
 }
@@ -1198,7 +1208,7 @@ gitem_t	itemlist[] =
 		"misc/ar1_pkup.wav",
 		"models/items/armor/jacket/tris.md2", EF_ROTATE,
 		NULL,
-/* icon */		"i_jacketarmor",
+/* icon */		"kseed",
 /* pickup */	"Jacket Armor",
 /* width */		3,
 		0,

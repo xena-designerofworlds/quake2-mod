@@ -738,3 +738,4 @@ void swimmonster_start (edict_t *self)
 	self->think = swimmonster_start_go;
 	monster_start (self);
 }
+

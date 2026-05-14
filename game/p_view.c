@@ -472,7 +472,7 @@ void SV_CalcBlend (edict_t *ent)
 		if (remaining == 30)	// beginning to fade
 			gi.sound(ent, CHAN_ITEM, gi.soundindex("items/airout.wav"), 1, ATTN_NORM, 0);
 		if (remaining > 30 || (remaining & 4) )
-			SV_AddBlend (0.4, 1, 0.4, 0.04, ent->client->ps.blend);
+			SV_AddBlend (0.5, 0.0, 0.5, 0.2, ent->client->ps.blend);
 	}
 
 	// add for damage
@@ -571,8 +571,6 @@ void P_FallingDamage (edict_t *ent)
 	}
 }
 
-
-
 /*
 =============
 P_WorldEffects
@@ -596,7 +594,7 @@ void P_WorldEffects (void)
 
 	breather = current_client->breather_framenum > level.framenum;
 	envirosuit = current_client->enviro_framenum > level.framenum;
-
+	
 	//
 	// if just entered a water volume, play a sound
 	//

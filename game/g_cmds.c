@@ -901,9 +901,24 @@ void Cmd_PlayerList_f(edict_t *ent)
 
 /*
 =========
-NPC Dialogue
+NPC Dialogue aka in game help screen
 ==========
 */
+qboolean yes;
+
+void Cmd_y_f(edict_t* ent)
+{
+	edict_t* player;
+	qboolean yes = true;
+	gi.cprintf(ent, PRINT_CHAT, "yes\n");
+}
+
+void Cmd_n_f(edict_t* ent)
+{
+	edict_t* player;
+	qboolean yes = false;
+	gi.cprintf(ent, PRINT_CHAT, "no\n");
+}
 
 void Cmd_StartConversation_f(edict_t* ent)
 {
@@ -911,100 +926,85 @@ void Cmd_StartConversation_f(edict_t* ent)
 	if (!ent) {
 		Com_Printf("no_ent_in_start_conversation_command");
 	}
-	int num = rand() % 5;
+	int num = rand() % 2;
 	Com_Printf("%i\n", num);
 
 
 	if (num == 0) {
-		Com_Printf("Isaac:" "Welcome, welcome!To the Prancing Ox — finest inn in all the — hic — all the realm! We have beds, stew, and more mead than God himself could drink! \n");
-		Com_Printf("How much for a room?(1)\n");
-		Com_Printf("What's in the stew?(2)\n");
-		Com_Printf("You're so drunk you confessed to a horse thinking it was a priest.(3)");
+		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
+		Com_Printf("Now it's time for me to answer your many questions!\n\n");
+		Com_Printf("	continue? y/n \n");
+		if (yes = true){
+			Com_Printf("	What new weapons are there? (1)\n");
+			Com_Printf("	What new items are there? (2)\n");
+	}
+		if (yes = false)
+		{ Com_Printf("	Questions? I don't have any questions, goodbye.\n"); return;  }
 
 	}
+	
 	else if (num == 1) {
-		Com_Printf("SIR EDMUND:" "You look at me as though I were something to behold. I am merely an old man who once sat on a warhorse. Sit, if you wish.\n");
-		Com_Printf("You bear the crest of the Christian Crusades(4)\n");
-		Com_Printf("What keeps you from sleep Goodman?(5)\n");
-		Com_Printf("How long have you served the crown?(6)");
+		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
+		Com_Printf("Ya ha ha! You've found me!  " "Do you have anything to ask? (y/n)" );
+		if (yes = true) {
+			Com_Printf("	What new weapons are there? (1)\n");
+			Com_Printf("	What new items are there? (2)\n");
+			Com_Printf("	I don't have anything to ask (3)\n");
+		}
+		if (yes = false)
+		{
+			Com_Printf("	Questions? I don't have any questions, goodbye.\n"); return;
+		}
 	}
-	else if (num == 2) {
-		Com_Printf("MICHEAL:" "Ohhh, a discerning eye! Today is your most fortunate day I have relics remedies and one item I am legally obligated to describe only as 'a surprise.'\n");
-		Com_Printf("Let me see your wares(7)\n");
-		Com_Printf("Surpise?(8)");
-	}
-	else if (num == 3) {
-		Com_Printf("LORD OF LEIPA:""You dare walk these halls in such attire ? I have seen scarecrows better dressed.State your name and purpose, if either are worth the air required to speak them you peasant Dung-Grubber\n");
-		Com_Printf("I am here on the king's business(9)\n");
-		Com_Printf("My attire has survived harder roads than your disdain(10)\n");
-		Com_Printf("Peasant? Dung-Grubber?(11)");
-	}
+	
 	else {
-		Com_Printf("Bandit:" "Well. I had wondered when our roads would cross. Two years since Ashbury — since you took my horse and my honour, and the crowd cheered your name whilst I ate dirt in the lists.\n");
-		Com_Printf("You should surrender while you still have your life(12)\n");
-		Com_Printf("The king warrents for your head!(13)\n");
+		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
+		Com_Printf("Ya ha ha!You've found me! Have you heard about my favorite items? (y/n) \n");
+		Com_Printf("	What new weapons are there? (1)\n");
+		Com_Printf("	What new items are there? (2)\n");
 	}
 
 }
+
 void Cmd_1_f(edict_t* ent)
 {
 	edict_t* player;
-	Com_Printf(" 5 Groschen for the night(1)\n");
-	Com_Printf("You pay for the room: -5 Groschen\n");
-	Com_Printf(" +5 Reputation\n");
+	Com_Printf("That is quite the question, are you sure you want to know about weapons?\n");
+	Com_Printf("Yes (4) \n");
+	Com_Printf("No (3) \n");
 }
 void Cmd_2_f(edict_t* ent)
 {
-	edict_t* player;
-	Com_Printf("Youll have to try it for yourself and find out!\n");
-	Com_Printf("You try the soup: -10 health\n");
-	Com_Printf(" +1 Reputation\n");
-
-
+	Com_Printf("give Majora's Mask + the key command shown in the inventory to use (b) - begins a powerup that makes you invisible to enemies for 30 seconds\n");
+	Com_Printf("give Guardian Shield + (i) - Protects you from enemy fire and melee shots\n");
+	Com_Printf("give Triforce + (q) - Basically a Timed God Mode * 100\n");
+	Com_Printf("give Korok Seed (also found within game) - collect the Korok Seeds to summon the Korok NPC and have a conversation\n");
+	Com_Printf("give Fairy + (e) - Revives the player when they are about to die\n\n");
+	gi.cprintf(ent, PRINT_CHAT, "Any more questions?\n  yes (1) \n no (3)");
 }
 void Cmd_3_f(edict_t* ent)
 {
 	edict_t* player;
-	Com_Printf("Im still strong enough to give you a good whacking!\n");
-	//ent->client-
-	gi.cprintf(ent, PRINT_CHAT, "You are dueling!\n");
+	Com_Printf("Goodbye\n");
+	Com_Printf("Korok: Aww, leaving so soon?, come back next time when you have more questions!");
+	gi.cprintf(ent, PRINT_CHAT, "You have stopped talking to Korok\n");
 }
 void Cmd_4_f(edict_t* ent)
 {
 	edict_t* player;
-
-
-	Com_Printf("That was a long time ago, which i do not wnjoy remembering\n");
-
-
+	Com_Printf("Torch - lights your way if held, infinite durability\n"
+		"Korok Leaf - blow enemies back with a gust of wind, they take knockback damage, infinite durability\n"
+		"Traveller's Sword - A simple melee weapon that hurts to get hit with, high durability\n"
+		"Master Sword - A less simple melee weapon that hurts significantly more when hit, low durability\n"
+		"Great Thunderblade - electrocutes and temporarily stuns enemies, medium durability\n"
+		"Throwing Spear - A mixed range / melee weapon that can be thrown and go stabby stabby, dependent on spear quantity\n"
+		"Shiekah Bomb - A bomb is launched and lands where it is thrown.It goes boom, (ideally after a button is pressed by the player)\n"
+		"Bow - A ranged weapon that causes reasonable damage, but it gets the job done, infinite durability\n"
+		"Forest Dweller's Bow - A ranged weapon that causes more damage and is generally very powerful, limited use.\n"
+		"Ancient Bow - High Damage Arrows that are unaffected by gravity, requires special arrows.\n\n\n");
+	gi.cprintf(ent, PRINT_CHAT, "Any more questions?\n  yes (1) \n no (3)");
 }
-void Cmd_5_f(edict_t* ent)
-{
-	edict_t* player;
-	Com_Printf("So much death and truama, will it ever end? Or is it a cylce? Can we overcome human nature?\n");
 
-}
-void Cmd_6_f(edict_t* ent)
-{
-	edict_t* player;
-	Com_Printf("41 years, which is 41 years too long to sevre\n");
-
-}
-void Cmd_7_f(edict_t* ent)
-{
-	edict_t* player;
-	Com_Printf("The Trader shows you his goods, a special healing potion catches your eye\n");
-	Com_Printf("15 Groschen: Strong Healing Potion\n");
-	Com_Printf("5 Groschen: Weak Healing Potion\n");
-
-
-}
-void Cmd_8_f(edict_t* ent)
-{
-	edict_t* player;
-	Com_Printf("The trader shows you a large tailisman which seems to be eradiation a malicuos and decieving aura\n");
-	Com_Printf("Just give me 1 Groschen and it's yours!\n");
-}
 /*
 =================
 ClientCommand
@@ -1048,54 +1048,58 @@ void ClientCommand (edict_t *ent)
 	if (level.intermissiontime)
 		return;
 
-	if (Q_stricmp (cmd, "use") == 0)
-		Cmd_Use_f (ent);
-	else if (Q_stricmp (cmd, "drop") == 0)
-		Cmd_Drop_f (ent);
-	else if (Q_stricmp (cmd, "give") == 0)
-		Cmd_Give_f (ent);
-	else if (Q_stricmp (cmd, "god") == 0)
-		Cmd_God_f (ent);
-	else if (Q_stricmp (cmd, "notarget") == 0)
-		Cmd_Notarget_f (ent);
-	else if (Q_stricmp (cmd, "noclip") == 0)
-		Cmd_Noclip_f (ent);
-	else if (Q_stricmp (cmd, "inven") == 0)
-		Cmd_Inven_f (ent);
-	else if (Q_stricmp (cmd, "invnext") == 0)
-		SelectNextItem (ent, -1);
-	else if (Q_stricmp (cmd, "invprev") == 0)
-		SelectPrevItem (ent, -1);
-	else if (Q_stricmp (cmd, "invnextw") == 0)
-		SelectNextItem (ent, IT_WEAPON);
-	else if (Q_stricmp (cmd, "invprevw") == 0)
-		SelectPrevItem (ent, IT_WEAPON);
-	else if (Q_stricmp (cmd, "invnextp") == 0)
-		SelectNextItem (ent, IT_POWERUP);
-	else if (Q_stricmp (cmd, "invprevp") == 0)
-		SelectPrevItem (ent, IT_POWERUP);
-	else if (Q_stricmp (cmd, "invuse") == 0)
-		Cmd_InvUse_f (ent);
-	else if (Q_stricmp (cmd, "invdrop") == 0)
-		Cmd_InvDrop_f (ent);
-	else if (Q_stricmp (cmd, "weapprev") == 0)
-		Cmd_WeapPrev_f (ent);
-	else if (Q_stricmp (cmd, "weapnext") == 0)
-		Cmd_WeapNext_f (ent);
-	else if (Q_stricmp (cmd, "weaplast") == 0)
-		Cmd_WeapLast_f (ent);
-	else if (Q_stricmp (cmd, "kill") == 0)
-		Cmd_Kill_f (ent);
-	else if (Q_stricmp (cmd, "putaway") == 0)
-		Cmd_PutAway_f (ent);
-	else if (Q_stricmp (cmd, "wave") == 0)
-		Cmd_Wave_f (ent);
+	if (Q_stricmp(cmd, "use") == 0)
+		Cmd_Use_f(ent);
+	else if (Q_stricmp(cmd, "drop") == 0)
+		Cmd_Drop_f(ent);
+	else if (Q_stricmp(cmd, "give") == 0)
+		Cmd_Give_f(ent);
+	else if (Q_stricmp(cmd, "god") == 0)
+		Cmd_God_f(ent);
+	else if (Q_stricmp(cmd, "notarget") == 0)
+		Cmd_Notarget_f(ent);
+	else if (Q_stricmp(cmd, "noclip") == 0)
+		Cmd_Noclip_f(ent);
+	else if (Q_stricmp(cmd, "inven") == 0)
+		Cmd_Inven_f(ent);
+	else if (Q_stricmp(cmd, "invnext") == 0)
+		SelectNextItem(ent, -1);
+	else if (Q_stricmp(cmd, "invprev") == 0)
+		SelectPrevItem(ent, -1);
+	else if (Q_stricmp(cmd, "invnextw") == 0)
+		SelectNextItem(ent, IT_WEAPON);
+	else if (Q_stricmp(cmd, "invprevw") == 0)
+		SelectPrevItem(ent, IT_WEAPON);
+	else if (Q_stricmp(cmd, "invnextp") == 0)
+		SelectNextItem(ent, IT_POWERUP);
+	else if (Q_stricmp(cmd, "invprevp") == 0)
+		SelectPrevItem(ent, IT_POWERUP);
+	else if (Q_stricmp(cmd, "invuse") == 0)
+		Cmd_InvUse_f(ent);
+	else if (Q_stricmp(cmd, "invdrop") == 0)
+		Cmd_InvDrop_f(ent);
+	else if (Q_stricmp(cmd, "weapprev") == 0)
+		Cmd_WeapPrev_f(ent);
+	else if (Q_stricmp(cmd, "weapnext") == 0)
+		Cmd_WeapNext_f(ent);
+	else if (Q_stricmp(cmd, "weaplast") == 0)
+		Cmd_WeapLast_f(ent);
+	else if (Q_stricmp(cmd, "kill") == 0)
+		Cmd_Kill_f(ent);
+	else if (Q_stricmp(cmd, "putaway") == 0)
+		Cmd_PutAway_f(ent);
+	else if (Q_stricmp(cmd, "wave") == 0)
+		Cmd_Wave_f(ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
 
 	//below are the new NPC dialogue commands - xena
 	else if (Q_stricmp(cmd, "startconvo") == 0)
 		Cmd_StartConversation_f(ent);
+	else if (Q_stricmp(cmd, "y") == 0)
+		Cmd_y_f(ent);
+	else if (Q_stricmp(cmd, "n") == 0)
+		Cmd_n_f(ent);
 	else if (Q_stricmp(cmd, "1") == 0)
 		Cmd_1_f(ent);
 	else if (Q_stricmp(cmd, "2") == 0)
@@ -1104,14 +1108,14 @@ void ClientCommand (edict_t *ent)
 		Cmd_3_f(ent);
 	else if (Q_stricmp(cmd, "4") == 0)
 		Cmd_4_f(ent);
-	else if (Q_stricmp(cmd, "5") == 0)
+	/*else if (Q_stricmp(cmd, "5") == 0)
 		Cmd_5_f(ent);
 	else if (Q_stricmp(cmd, "6") == 0)
 		Cmd_6_f(ent);
 	else if (Q_stricmp(cmd, "7") == 0)
 		Cmd_7_f(ent);
 	else if (Q_stricmp(cmd, "8") == 0)
-		Cmd_8_f(ent);
+		Cmd_8_f(ent); */
 
 	//below are for changing monster behaviors
 
