@@ -1221,8 +1221,8 @@ gitem_t	itemlist[] =
 		"misc/ar2_pkup.wav",
 		"models/items/armor/shard/tris.md2", EF_ROTATE,
 		NULL,
-/* icon */		"i_jacketarmor",
-/* pickup */	"Armor Shard",
+/* icon */		"kseed",
+/* pickup */	"Korok Seed",
 /* width */		3,
 		0,
 		NULL,
@@ -1297,7 +1297,7 @@ always owned, never in the world
 		"misc/w_pkup.wav",
 		NULL, 0,
 		"models/weapons/v_blast/tris.md2",
-/* icon */		"w_blaster",
+/* icon */		"blaster",
 /* pickup */	"Blaster",
 		0,
 		0,
@@ -1366,8 +1366,8 @@ always owned, never in the world
 		"misc/w_pkup.wav",
 		"models/weapons/g_machn/tris.md2", EF_ROTATE,
 		"models/weapons/v_machn/tris.md2",
-/* icon */		"w_machinegun",
-/* pickup */	"Machinegun",
+/* icon */		"machine",
+/* pickup */	"Korok Leaf",
 		0,
 		1,
 		"Bullets",
@@ -1577,7 +1577,7 @@ always owned, never in the world
 		"misc/am_pkup.wav",
 		"models/items/ammo/bullets/medium/tris.md2", 0,
 		NULL,
-/* icon */		"a_bullets",
+/* icon */		"machine",
 /* pickup */	"Bullets",
 /* width */		3,
 		50,
@@ -1673,8 +1673,8 @@ always owned, never in the world
 		"items/pkup.wav",
 		"models/items/quaddama/tris.md2", EF_ROTATE,
 		NULL,
-/* icon */		"p_quad",
-/* pickup */	"Quad Damage",
+/* icon */		"triforce",
+/* pickup */	"Triforce",
 /* width */		2,
 		60,
 		NULL,
@@ -1696,8 +1696,8 @@ always owned, never in the world
 		"items/pkup.wav",
 		"models/items/invulner/tris.md2", EF_ROTATE,
 		NULL,
-/* icon */		"p_invulnerability",
-/* pickup */	"Invulnerability",
+/* icon */		"shield",
+/* pickup */	"Guardian Shield",
 /* width */		2,
 		300,
 		NULL,
@@ -1742,8 +1742,8 @@ always owned, never in the world
 		"items/pkup.wav",
 		"models/items/breather/tris.md2", EF_ROTATE,
 		NULL,
-/* icon */		"p_rebreather",
-/* pickup */	"Rebreather",
+/* icon */		"majora",
+/* pickup */	"Majora's Mask",
 /* width */		2,
 		60,
 		NULL,
@@ -2100,7 +2100,7 @@ tank commander's head
 		NULL, 0,
 		NULL,
 /* icon */		"i_health",
-/* pickup */	"Health",
+/* pickup */	"Grilled Fish",
 /* width */		3,
 		0,
 		NULL,
@@ -2128,7 +2128,7 @@ void SP_item_health (edict_t *self)
 
 	self->model = "models/items/healing/medium/tris.md2";
 	self->count = 10;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Grilled Fish"));
 	gi.soundindex ("items/n_health.wav");
 }
 
@@ -2144,7 +2144,7 @@ void SP_item_health_small (edict_t *self)
 
 	self->model = "models/items/healing/stimpack/tris.md2";
 	self->count = 2;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Grilled Fish"));
 	self->style = HEALTH_IGNORE_MAX;
 	gi.soundindex ("items/s_health.wav");
 }
@@ -2161,7 +2161,7 @@ void SP_item_health_large (edict_t *self)
 
 	self->model = "models/items/healing/large/tris.md2";
 	self->count = 25;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Grilled Fish"));
 	gi.soundindex ("items/l_health.wav");
 }
 
@@ -2177,7 +2177,7 @@ void SP_item_health_mega (edict_t *self)
 
 	self->model = "models/items/mega_h/tris.md2";
 	self->count = 100;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Grilled Fish"));
 	gi.soundindex ("items/m_health.wav");
 	self->style = HEALTH_IGNORE_MAX|HEALTH_TIMED;
 }

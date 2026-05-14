@@ -899,7 +899,112 @@ void Cmd_PlayerList_f(edict_t *ent)
 	gi.cprintf(ent, PRINT_HIGH, "%s", text);
 }
 
+/*
+=========
+NPC Dialogue
+==========
+*/
 
+void Cmd_StartConversation_f(edict_t* ent)
+{
+	gclient_t* player;
+	if (!ent) {
+		Com_Printf("no_ent_in_start_conversation_command");
+	}
+	int num = rand() % 5;
+	Com_Printf("%i\n", num);
+
+
+	if (num == 0) {
+		Com_Printf("Isaac:" "Welcome, welcome!To the Prancing Ox — finest inn in all the — hic — all the realm! We have beds, stew, and more mead than God himself could drink! \n");
+		Com_Printf("How much for a room?(1)\n");
+		Com_Printf("What's in the stew?(2)\n");
+		Com_Printf("You're so drunk you confessed to a horse thinking it was a priest.(3)");
+
+	}
+	else if (num == 1) {
+		Com_Printf("SIR EDMUND:" "You look at me as though I were something to behold. I am merely an old man who once sat on a warhorse. Sit, if you wish.\n");
+		Com_Printf("You bear the crest of the Christian Crusades(4)\n");
+		Com_Printf("What keeps you from sleep Goodman?(5)\n");
+		Com_Printf("How long have you served the crown?(6)");
+	}
+	else if (num == 2) {
+		Com_Printf("MICHEAL:" "Ohhh, a discerning eye! Today is your most fortunate day I have relics remedies and one item I am legally obligated to describe only as 'a surprise.'\n");
+		Com_Printf("Let me see your wares(7)\n");
+		Com_Printf("Surpise?(8)");
+	}
+	else if (num == 3) {
+		Com_Printf("LORD OF LEIPA:""You dare walk these halls in such attire ? I have seen scarecrows better dressed.State your name and purpose, if either are worth the air required to speak them you peasant Dung-Grubber\n");
+		Com_Printf("I am here on the king's business(9)\n");
+		Com_Printf("My attire has survived harder roads than your disdain(10)\n");
+		Com_Printf("Peasant? Dung-Grubber?(11)");
+	}
+	else {
+		Com_Printf("Bandit:" "Well. I had wondered when our roads would cross. Two years since Ashbury — since you took my horse and my honour, and the crowd cheered your name whilst I ate dirt in the lists.\n");
+		Com_Printf("You should surrender while you still have your life(12)\n");
+		Com_Printf("The king warrents for your head!(13)\n");
+	}
+
+}
+void Cmd_1_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf(" 5 Groschen for the night(1)\n");
+	Com_Printf("You pay for the room: -5 Groschen\n");
+	Com_Printf(" +5 Reputation\n");
+}
+void Cmd_2_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf("Youll have to try it for yourself and find out!\n");
+	Com_Printf("You try the soup: -10 health\n");
+	Com_Printf(" +1 Reputation\n");
+
+
+}
+void Cmd_3_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf("Im still strong enough to give you a good whacking!\n");
+	//ent->client-
+	gi.cprintf(ent, PRINT_CHAT, "You are dueling!\n");
+}
+void Cmd_4_f(edict_t* ent)
+{
+	edict_t* player;
+
+
+	Com_Printf("That was a long time ago, which i do not wnjoy remembering\n");
+
+
+}
+void Cmd_5_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf("So much death and truama, will it ever end? Or is it a cylce? Can we overcome human nature?\n");
+
+}
+void Cmd_6_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf("41 years, which is 41 years too long to sevre\n");
+
+}
+void Cmd_7_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf("The Trader shows you his goods, a special healing potion catches your eye\n");
+	Com_Printf("15 Groschen: Strong Healing Potion\n");
+	Com_Printf("5 Groschen: Weak Healing Potion\n");
+
+
+}
+void Cmd_8_f(edict_t* ent)
+{
+	edict_t* player;
+	Com_Printf("The trader shows you a large tailisman which seems to be eradiation a malicuos and decieving aura\n");
+	Com_Printf("Just give me 1 Groschen and it's yours!\n");
+}
 /*
 =================
 ClientCommand
@@ -987,6 +1092,29 @@ void ClientCommand (edict_t *ent)
 		Cmd_Wave_f (ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
+
+	//below are the new NPC dialogue commands - xena
+	else if (Q_stricmp(cmd, "startconvo") == 0)
+		Cmd_StartConversation_f(ent);
+	else if (Q_stricmp(cmd, "1") == 0)
+		Cmd_1_f(ent);
+	else if (Q_stricmp(cmd, "2") == 0)
+		Cmd_2_f(ent);
+	else if (Q_stricmp(cmd, "3") == 0)
+		Cmd_3_f(ent);
+	else if (Q_stricmp(cmd, "4") == 0)
+		Cmd_4_f(ent);
+	else if (Q_stricmp(cmd, "5") == 0)
+		Cmd_5_f(ent);
+	else if (Q_stricmp(cmd, "6") == 0)
+		Cmd_6_f(ent);
+	else if (Q_stricmp(cmd, "7") == 0)
+		Cmd_7_f(ent);
+	else if (Q_stricmp(cmd, "8") == 0)
+		Cmd_8_f(ent);
+
+	//below are for changing monster behaviors
+
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

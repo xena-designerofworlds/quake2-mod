@@ -75,9 +75,9 @@ void P_DamageFeedback (edict_t *player)
 	float	realcount, count, kick;
 	vec3_t	v;
 	int		r, l;
-	static	vec3_t	power_color = {0.0, 1.0, 0.0};
+	static	vec3_t	power_color = {0.0, 0.0, 1.0};
 	static	vec3_t	acolor = {1.0, 1.0, 1.0};
-	static	vec3_t	bcolor = {1.0, 0.0, 0.0};
+	static	vec3_t	bcolor = {0.0, 0.0, 1.0};
 
 	client = player->client;
 
@@ -163,6 +163,8 @@ void P_DamageFeedback (edict_t *player)
 		VectorMA (v, (float)client->damage_armor/realcount,  acolor, v);
 	if (client->damage_blood)
 		VectorMA (v, (float)client->damage_blood/realcount,  bcolor, v);
+	if (client->damage_parmor)
+		VectorMA(v, (float)client->damage_parmor / realcount, power_color, v);
 	VectorCopy (v, client->damage_blend);
 
 
@@ -236,7 +238,7 @@ void SV_CalcViewOffset (edict_t *ent)
 	// if dead, fix the angle and don't add any kick
 	if (ent->deadflag)
 	{
-		VectorClear (angles);
+		//VectorClear (angles);
 
 		ent->client->ps.viewangles[ROLL] = 40;
 		ent->client->ps.viewangles[PITCH] = -15;
@@ -770,7 +772,7 @@ void G_SetClientEffects (edict_t *ent)
 	if (ent->client->quad_framenum > level.framenum)
 	{
 		remaining = ent->client->quad_framenum - level.framenum;
-		if (remaining > 30 || (remaining & 4) )
+		if (remaining > 60 || (remaining & 4) )
 			ent->s.effects |= EF_QUAD;
 	}
 

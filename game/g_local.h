@@ -54,7 +54,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	SPAWNFLAG_NOT_COOP			0x00001000
 
 // edict->flags
-#define	FL_FLY					0x00000001
+#define	FL_FLY					0x00000001  //
 #define	FL_SWIM					0x00000002	// implied immunity to drowining
 #define FL_IMMUNE_LASER			0x00000004
 #define	FL_INWATER				0x00000008
@@ -124,7 +124,7 @@ typedef enum
 #define GIB_METALLIC			1
 
 //monster ai flags
-#define AI_STAND_GROUND			0x00000001
+#define AI_STAND_GROUND			0x00000001 //put monster behavior flags here
 #define AI_TEMP_STAND_GROUND	0x00000002
 #define AI_SOUND_TARGET			0x00000004
 #define AI_LOST_SIGHT			0x00000008
@@ -726,6 +726,7 @@ qboolean FacingIdeal(edict_t *self);
 void ThrowDebris (edict_t *self, char *modelname, float speed, vec3_t origin);
 qboolean fire_hit (edict_t *self, vec3_t aim, int damage, int kick);
 void fire_bullet (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int mod);
+void fire_air(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread);
 void fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int count, int mod);
 void fire_blaster (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int effect, qboolean hyper);
 void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius);
@@ -906,6 +907,7 @@ struct gclient_s
 	// sum up damage over an entire frame, so
 	// shotgun blasts give a single big kick
 	int			damage_armor;		// damage absorbed by armor
+	int			damage_air; // xena trying for color
 	int			damage_parmor;		// damage absorbed by power armor
 	int			damage_blood;		// damage taken out of health
 	int			damage_knockback;	// impact damage

@@ -254,7 +254,7 @@ void NoAmmoWeaponChange (edict_t *ent)
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("bullets"))]
 		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("machinegun"))] )
 	{
-		ent->client->newweapon = FindItem ("machinegun");
+		ent->client->newweapon = FindItem ("Korok Leaf");
 		return;
 	}
 	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("shells"))] > 1
@@ -835,17 +835,17 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	start[0] += (right[0] * 15);
 	start[1] += (right[1] * 15);
 	start[2] += (right[2] * 15);
-	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster(ent, start, forward, damage, 100, effect, hyper);
 
 	start[0] += (up[0] * 15);
 	start[1] += (up[1] * 15);
 	start[2] += (up[2] * 15);
-	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster(ent, start, forward, damage, 100, effect, hyper);
 
 	start[0] -= (up[0] * 30);
 	start[1] -= (up[1] * 30);
 	start[2] -= (up[2] * 30);
-	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster(ent, start, forward, damage, 100, effect, hyper);
 
 	start[0] += (up[0] * 15);
 	start[1] += (up[1] * 15);
@@ -853,17 +853,17 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	start[0] -= (right[0] * 30);
 	start[1] -= (right[1] * 30);
 	start[2] -= (right[2] * 30);
-	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster(ent, start, forward, damage, 100, effect, hyper);
 
 	start[0] += (up[0] * 15);
 	start[1] += (up[1] * 15);
 	start[2] += (up[2] * 15);
-	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster(ent, start, forward, damage, 100, effect, hyper);
 
 	start[0] -= (up[0] * 30);
 	start[1] -= (up[1] * 30);
 	start[2] -= (up[2] * 30);
-	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster(ent, start, forward, damage, 100, effect, hyper);
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
@@ -1045,11 +1045,28 @@ void Machinegun_Fire (edict_t *ent)
 	AngleVectors (angles, forward, right, NULL);
 	VectorSet(offset, 0, 8, ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
-	fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
+
+	fire_air(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] * 10);
+	start[1] += (right[1] * 10);
+	start[2] += (right[2] * 10);
+	(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] + 10);
+	(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] + 10);
+	(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] + 10);
+	(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] + 10);
+	fire_air(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] - 50);
+	fire_air(ent, start, forward, damage, kick, 1000, 1000);
+	start[0] += (right[0] - 60);
+	fire_air(ent, start, forward, damage, kick, 1000, 1000);
 
 	gi.WriteByte (svc_muzzleflash);
 	gi.WriteShort (ent-g_edicts);
-	gi.WriteByte (MZ_MACHINEGUN | is_silenced);
+	gi.WriteByte (MZ_PHALANX | is_silenced);
 	gi.multicast (ent->s.origin, MULTICAST_PVS);
 
 	PlayerNoise(ent, start, PNOISE_WEAPON);
@@ -1078,7 +1095,7 @@ void Weapon_Machinegun (edict_t *ent)
 	Weapon_Generic (ent, 3, 5, 45, 49, pause_frames, fire_frames, Machinegun_Fire);
 }
 
-void Chaingun_Fire (edict_t *ent)
+void Chaingun_Fire (edict_t *ent) 
 {
 	int			i;
 	int			shots;
@@ -1180,6 +1197,8 @@ void Chaingun_Fire (edict_t *ent)
 		r = 7 + crandom()*4;
 		u = crandom()*4;
 		VectorSet(offset, 0, r, u + ent->viewheight-8);
+		VectorScale(forward, - 4, ent->client->kick_origin);
+		ent->client->kick_angles[0] = -2;
 		P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
 
 		fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
