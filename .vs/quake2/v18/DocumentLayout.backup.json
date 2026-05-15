@@ -87,8 +87,7 @@
               "ViewState": "AgIAAD0CAAAAAAAAAAAswFMCAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-05-08T05:17:43.289Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -101,8 +100,7 @@
               "ViewState": "AgIAADMAAAAAAAAAAAAkwEQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-05-14T04:09:34.435Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -122,8 +120,7 @@
               "RelativeToolTip": "game\\m_soldier.c",
               "ViewState": "AgIAABYDAAAAAAAAAAAkwCwDAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-14T07:28:57.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T07:28:57.46Z"
             },
             {
               "$type": "Document",
@@ -135,8 +132,7 @@
               "RelativeToolTip": "game\\game.h",
               "ViewState": "AgIAAOwAAAAAAAAAAAAAAP4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-14T08:56:05.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T08:56:05.626Z"
             },
             {
               "$type": "Document",
@@ -148,8 +144,7 @@
               "RelativeToolTip": "game\\g_local.h",
               "ViewState": "AgIAAOgAAAAAAAAAAAAkwPkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-13T20:05:05.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T20:05:05.541Z"
             },
             {
               "$type": "Document",
@@ -161,8 +156,7 @@
               "RelativeToolTip": "game\\m_infantry.c",
               "ViewState": "AgIAACIBAAAAAAAAAAAswDABAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-14T07:44:26.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T07:44:26.555Z"
             },
             {
               "$type": "Document",
@@ -174,8 +168,7 @@
               "RelativeToolTip": "game\\g_items.c",
               "ViewState": "AgIAAGsBAAAAAAAAAAAAAIABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-13T19:53:35.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T19:53:35.975Z"
             },
             {
               "$type": "Document",
@@ -200,8 +193,7 @@
               "RelativeToolTip": "game\\p_client.c",
               "ViewState": "AgIAAB8AAAAAAAAAAAAkwD4AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-13T20:48:44.027Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T20:48:44.027Z"
             },
             {
               "$type": "Document",
@@ -213,8 +205,7 @@
               "RelativeToolTip": "game\\g_combat.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-14T10:10:03.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T10:10:03.946Z"
             },
             {
               "$type": "Document",
@@ -226,8 +217,7 @@
               "RelativeToolTip": "game\\g_spawn.c",
               "ViewState": "AgIAAFsBAAAAAAAAAAAowG4BAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-14T08:06:35.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T08:06:35.735Z"
             },
             {
               "$type": "Document",
@@ -239,8 +229,7 @@
               "RelativeToolTip": "game\\p_view.c",
               "ViewState": "AgIAAIcCAAAAAAAAAIAwwJkCAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-14T04:21:55.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T04:21:55.241Z"
             },
             {
               "$type": "Document",
@@ -252,8 +241,7 @@
               "RelativeToolTip": "game\\g_turret.c",
               "ViewState": "AgIAAOcAAAAAAAAAAAAywPAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-05-14T06:53:07.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-14T06:53:07.792Z"
             },
             {
               "$type": "Document",

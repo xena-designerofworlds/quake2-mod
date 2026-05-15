@@ -318,14 +318,14 @@ void HelpComputer (edict_t *ent)
 		"xv 32 yv 8 picn help "			// background
 		"xv 202 yv 12 string2 \"Korok\" "		// skill
 		"xv 0 yv 24 cstring2 \"yahaha! you found me!\" "		// level name
-		"xv 0 yv 54 cstring2 \"%s\" "		// help 1
-		"xv 0 yv 110 cstring2 \"%s\" "		// help 2
+		"xv 0 yv 54 cstring2 \"Once you have 4 Korok Seeds, type 'startconvo' in the console\" "		// help 1
+		"xv 0 yv 110 cstring2 \"engage in dialogue to learn about your weapons and items\" "		// help 2
 		"xv 50 yv 164 string2 \" kills     goals    secrets\" "
 		"xv 50 yv 172 string2 \"%3i/%3i     %i/%i       %i/%i\" ", 
-		sk,
+		//sk,
 		//level.level_name,
-		game.helpmessage1,
-		game.helpmessage2,
+		//game.helpmessage1,
+		//game.helpmessage2,
 		level.killed_monsters, level.total_monsters, 
 		level.found_goals, level.total_goals,
 		level.found_secrets, level.total_secrets);

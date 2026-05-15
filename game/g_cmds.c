@@ -904,7 +904,7 @@ void Cmd_PlayerList_f(edict_t *ent)
 NPC Dialogue aka in game help screen
 ==========
 */
-qboolean yes;
+qboolean yes = false;
 
 void Cmd_y_f(edict_t* ent)
 {
@@ -924,7 +924,7 @@ void Cmd_StartConversation_f(edict_t* ent)
 {
 	gclient_t* player;
 	if (!ent) {
-		Com_Printf("no_ent_in_start_conversation_command");
+		Com_Printf("no_ent_in_startconvo");
 	}
 	int num = rand() % 2;
 	Com_Printf("%i\n", num);
@@ -945,7 +945,7 @@ void Cmd_StartConversation_f(edict_t* ent)
 	
 	else if (num == 1) {
 		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
-		Com_Printf("Ya ha ha! You've found me!  " "Do you have anything to ask? (y/n)" );
+		Com_Printf("Ya ha ha! You've found me!  " "Do you have anything to ask? (y/n)\n" );
 		if (yes = true) {
 			Com_Printf("	What new weapons are there? (1)\n");
 			Com_Printf("	What new items are there? (2)\n");
@@ -975,7 +975,7 @@ void Cmd_1_f(edict_t* ent)
 }
 void Cmd_2_f(edict_t* ent)
 {
-	Com_Printf("give Majora's Mask + the key command shown in the inventory to use (b) - begins a powerup that makes you invisible to enemies for 30 seconds\n");
+	Com_Printf("\ngive Majora's Mask + the key command shown in the inventory to use (b) - begins a powerup that makes you invisible to enemies for 30 seconds\n");
 	Com_Printf("give Guardian Shield + (i) - Protects you from enemy fire and melee shots\n");
 	Com_Printf("give Triforce + (q) - Basically a Timed God Mode * 100\n");
 	Com_Printf("give Korok Seed (also found within game) - collect the Korok Seeds to summon the Korok NPC and have a conversation\n");
@@ -986,7 +986,7 @@ void Cmd_3_f(edict_t* ent)
 {
 	edict_t* player;
 	Com_Printf("Goodbye\n");
-	Com_Printf("Korok: Aww, leaving so soon?, come back next time when you have more questions!");
+	Com_Printf("Korok: Aww, leaving so soon?, come back next time when you have more questions!\n");
 	gi.cprintf(ent, PRINT_CHAT, "You have stopped talking to Korok\n");
 }
 void Cmd_4_f(edict_t* ent)
@@ -1002,7 +1002,7 @@ void Cmd_4_f(edict_t* ent)
 		"Bow - A ranged weapon that causes reasonable damage, but it gets the job done, infinite durability\n"
 		"Forest Dweller's Bow - A ranged weapon that causes more damage and is generally very powerful, limited use.\n"
 		"Ancient Bow - High Damage Arrows that are unaffected by gravity, requires special arrows.\n\n\n");
-	gi.cprintf(ent, PRINT_CHAT, "Any more questions?\n  yes (1) \n no (3)");
+	gi.cprintf(ent, PRINT_CHAT, "Any more questions?\n  yes (1) \n	no (3)");
 }
 
 /*
