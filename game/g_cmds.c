@@ -353,6 +353,33 @@ void Cmd_Notarget_f (edict_t *ent)
 	gi.cprintf (ent, PRINT_HIGH, msg);
 }
 
+/*
+==================
+Cmd_Notarget_f
+
+Sets client to notarget
+
+argv(0) notarget
+==================
+*/
+void Cmd_MaskOff_f(edict_t* ent)
+{
+	char* msg;
+
+	if (deathmatch->value && !sv_cheats->value)
+	{
+		gi.cprintf(ent, PRINT_HIGH, "You must run the server with '+set cheats 1' to enable this command.\n");
+		return;
+	}
+
+	ent->flags ^= FL_NOTARGET;
+	if (!(ent->flags & FL_NOTARGET))
+		msg = "majora's mask OFF\n";
+	else
+		msg = "majora's mask ON\n";
+
+	gi.cprintf(ent, PRINT_HIGH, msg);
+}
 
 /*
 ==================
@@ -931,7 +958,7 @@ void Cmd_StartConversation_f(edict_t* ent)
 
 
 	if (num == 0) {
-		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
+		Com_Printf("Ya ha ha!You've found me! ");
 		Com_Printf("Now it's time for me to answer your many questions!\n\n");
 		Com_Printf("	continue? y/n \n");
 		if (yes = true){
@@ -944,21 +971,22 @@ void Cmd_StartConversation_f(edict_t* ent)
 	}
 	
 	else if (num == 1) {
-		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
-		Com_Printf("Ya ha ha! You've found me!  " "Do you have anything to ask? (y/n)\n" );
+		//gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
+		Com_Printf("Ya ha ha! You've found me! Do you have anything to ask? (y/n)\n" );
 		if (yes = true) {
 			Com_Printf("	What new weapons are there? (1)\n");
 			Com_Printf("	What new items are there? (2)\n");
 			Com_Printf("	I don't have anything to ask (3)\n");
+			Com_Printf("	Questions? I don't have any questions, goodbye.\n");
 		}
 		if (yes = false)
 		{
-			Com_Printf("	Questions? I don't have any questions, goodbye.\n"); return;
+			Com_Printf("	Questions? I don't have any questions, goodbye.\n");
 		}
 	}
 	
 	else {
-		gi.cprintf(ent, PRINT_CHAT, "Ya ha ha!You've found me! \n");
+		//Com_Printf( "Ya ha ha!You've found me! \n");
 		Com_Printf("Ya ha ha!You've found me! Have you heard about my favorite items? (y/n) \n");
 		Com_Printf("	What new weapons are there? (1)\n");
 		Com_Printf("	What new items are there? (2)\n");
@@ -1117,7 +1145,10 @@ void ClientCommand (edict_t *ent)
 	else if (Q_stricmp(cmd, "8") == 0)
 		Cmd_8_f(ent); */
 
-	//below are for changing monster behaviors
+		//below are for changing monster behaviors
+
+	else if (Q_stricmp(cmd, "maskon") == 0)
+		Cmd_MaskOff_f(ent);
 
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);

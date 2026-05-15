@@ -539,7 +539,7 @@ GRENADE
 ======================================================================
 */
 
-#define GRENADE_TIMER		3.0
+#define GRENADE_TIMER		2.0
 #define GRENADE_MINSPEED	400
 #define GRENADE_MAXSPEED	800
 
@@ -555,7 +555,7 @@ void weapon_grenade_fire (edict_t *ent, qboolean held)
 
 	radius = damage+40;
 	if (is_quad)
-		damage *= 4;
+		damage *= 10;
 
 	VectorSet(offset, 8, 8, ent->viewheight-8);
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
@@ -714,9 +714,9 @@ void weapon_grenadelauncher_fire (edict_t *ent)
 	int		damage = 120;
 	float	radius;
 
-	radius = damage+40;
+	radius = damage + 100;
 	if (is_quad)
-		damage *= 4;
+		damage *= 10;
 
 	VectorSet(offset, 8, 8, ent->viewheight-8);
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
@@ -725,7 +725,7 @@ void weapon_grenadelauncher_fire (edict_t *ent)
 	VectorScale (forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
 
-	fire_grenade (ent, start, forward, damage, 600, 2.5, radius);
+	fire_grenade (ent, start, forward, damage, 600, 10, radius);
 
 	gi.WriteByte (svc_muzzleflash);
 	gi.WriteShort (ent-g_edicts);
@@ -769,8 +769,8 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	damage_radius = 120;
 	if (is_quad)
 	{
-		damage *= 4;
-		radius_damage *= 4;
+		damage *= 10;
+		radius_damage *= 10;
 	}
 
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
@@ -820,7 +820,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	vec3_t	offset;
 
 	if (is_quad)
-		damage *= 4;
+		damage *= 20;
 	AngleVectors (ent->client->v_angle, forward, right, up);
 	VectorSet(offset, 24, 8, ent->viewheight-8);
 	VectorAdd (offset, g_offset, offset);
@@ -1021,7 +1021,7 @@ void Machinegun_Fire (edict_t *ent)
 	if (is_quad)
 	{
 		damage *= 4;
-		kick *= 4;
+		kick *= 10;
 	}
 
 	for (i=1 ; i<3 ; i++)
@@ -1180,8 +1180,8 @@ void Chaingun_Fire (edict_t *ent)
 
 	if (is_quad)
 	{
-		damage *= 4;
-		kick *= 4;
+		damage *= 10;
+		kick *= 10;
 	}
 
 	for (i=0 ; i<3 ; i++)
